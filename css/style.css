@@ -315,7 +315,7 @@ p {
   -webkit-transition: 0.5s, color 0.1s;
   -moz-transition: 0.5s, color 0.1s;
 }
-.grow :hover {
+.grow:hover {
   transform: scale3d(1.5, 1.5, 0.3);
   -webkit-transform: scale3d(1.5, 1.5, 0.3);
   -moz-transform: scale3d(1.5, 1.5, 0.3);
