@@ -38,7 +38,7 @@ input{
     font-family:'Montserrat',sans-serif;
     transition:all .3s;
     border-bottom:2px solid paleta.$color_grey;
-    & :focus{
+    &:focus{
         border-bottom:2px solid paleta.$color_dark_grey;
     }
 }
@@ -60,7 +60,7 @@ input{
     color:paleta.$color_dark_grey;
     cursor:pointer;
     transition:all .3s;
-    & :hover{
+    &:hover{
         background:paleta.$color_dark_grey;
         color:paleta.$color_white;
     }
