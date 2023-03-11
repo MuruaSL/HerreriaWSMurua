@@ -71,11 +71,12 @@ input:focus {
   background-size: cover;
 }
 
-.portfolio-sizemaxmin {
-  min-width: 392px;
-  max-width: 500px;
+@media (max-width: 767px) {
+  .portfolio-sizemaxmin {
+    min-width: 300px;
+    max-width: 500px;
+  }
 }
-
 /*-------------------------------------------------------QUE HACEMOS ------------------------------------------------------------------------*/
 /*----------------- Se comporta igual que la pagina de quienes_somos por lo que se reutiliza class="grid-master_whoweare " ----------------------- */
 .conoce_mas2 {
@@ -390,6 +391,9 @@ footer {
   .reverse {
     display: flex;
     flex-direction: column-reverse;
+  }
+  .index_mobile-imgsize {
+    max-width: 350px;
   }
 }
 .main_row_div_font_odd-css {
