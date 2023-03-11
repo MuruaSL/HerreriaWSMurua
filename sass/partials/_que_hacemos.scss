@@ -7,9 +7,11 @@
     text-align: center;
     font-size: 2rem;
     padding-top: 1rem;
+
     & p {
         color: paleta.$color_white;
             padding-top: 3.2rem;
+            padding-bottom: 2rem;
         }
     & button{
         border-radius: 1rem;
@@ -22,9 +24,7 @@
     }
 }
 
-.values_container2{
-    height: 400px;
-}
+
 .whatwedo_text_css{
     line-height: 70px;
 }
@@ -37,7 +37,7 @@
     background-color: paleta.$color_dark_grey;
     grid-area: 4 / 1 / 5 / 3;
     color: paleta.$color_white;
-    height:  400px;
+    
     padding-right: 15px;
     padding-left: 15px;
 } 
