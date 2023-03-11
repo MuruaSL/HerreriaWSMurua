@@ -1,0 +1,37 @@
+@use "./paleta";
+
+/* ----------------------------------- RECONOCIMIENTOS ------------------------------------ */
+.main_reconocimientos{
+    background-image: url(../img/galardones/fondoMetal.jpg);
+}
+
+.galardon_css{
+    height: 300px;
+    border-radius: 20px;
+    padding-bottom: 20px;
+}
+.galardon_style{
+    background-color: paleta.$color_grey;
+    margin-top: 20px;
+    align-items: center;
+    padding: 3rem;
+    border-radius:50px;
+    box-shadow:0 0 40px -10px paleta.$color_dark_grey;
+    width:540px;
+    height:700px;
+    margin:calc(50vh - 220px) auto;
+}
+.reconocimiento_h2_style{
+    padding: 1rem;
+}
+.galardon_style_odd{
+    background-color: paleta.$color_white;
+    align-items: center;
+    padding: 3rem;
+    border-radius:50px;
+    box-shadow:0 0 40px -10px paleta.$color_dark_grey;
+    width:540px;
+    height:680px;
+    margin:calc(50vh - 220px) auto;
+}
+

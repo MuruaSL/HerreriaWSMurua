@@ -1,0 +1,75 @@
+@use "./paleta";
+
+
+/* -----------------------------------FORMULARIO DE CONTACTO------------------------------------ */
+.contact_main_css{
+    background-image: url(../img/galardones/fondoMetal.jpg);
+    
+}
+.form{
+    width:340px;
+    height:440px;
+    background:paleta.$color_white;
+    border-radius:8px;
+    box-shadow:0 0 40px -10px paleta.$color_black;
+    margin:calc(50vh - 220px) auto;
+    padding:20px 30px;
+    max-width:calc(100vw - 40px);
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+    position:relative
+}
+.contacto_h2{
+    margin:10px 0;
+    padding-bottom:10px;
+    width:180px;
+    color:paleta.$color_dark_grey;
+    border-bottom:3px solid paleta.$color_dark_grey;
+}
+    
+input{
+    width:100%;
+    padding:10px;
+    box-sizing:border-box;
+    background:none;
+    outline:none;
+    resize:none;
+    border:0;
+    font-family:'Montserrat',sans-serif;
+    transition:all .3s;
+    border-bottom:2px solid paleta.$color_grey;
+    & :focus{
+        border-bottom:2px solid paleta.$color_dark_grey;
+    }
+}
+.contacto_p:before{
+    content:attr(type);
+    display:block;
+    margin:28px 0 0;
+    font-size:14px;
+    color:paleta.$color_dark_grey;
+}
+
+.contacto_button{
+    float:right;
+    padding:8px 12px;
+    margin:8px 0 0;
+    font-family:'Montserrat',sans-serif;
+    border:2px solid paleta.$color_dark_grey;
+    background:0;
+    color:paleta.$color_dark_grey;
+    cursor:pointer;
+    transition:all .3s;
+    & :hover{
+        background:paleta.$color_dark_grey;
+        color:paleta.$color_white;
+    }
+}
+
+
+.form_backcolor{
+    background-image: url(../img/galardones/depositphotos_57492523-stock-photo-wooden-plank-background-and-texture.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
