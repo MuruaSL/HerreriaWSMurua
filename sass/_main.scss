@@ -108,6 +108,14 @@ footer{
     background-color: paleta.$color_white;
     align-items: center;
 }
+@media (max-width: 767px){
+    
+.reverse{
+    display: flex;
+    flex-direction: column-reverse;
+}
+}
+
 
 .main_row_div_font_odd-css{
     color: paleta.$color_white;
