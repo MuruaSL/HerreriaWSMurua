@@ -355,6 +355,11 @@ footer {
   color: #ffffff;
 }
 
+.navbar_title-size {
+  font-size: 1.3rem;
+  margin-bottom: 0;
+}
+
 /* -------------------------MAIN_INDEX------------------------- */
 .header_banner-css {
   width: 100%;
