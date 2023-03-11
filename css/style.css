@@ -386,6 +386,12 @@ footer {
   align-items: center;
 }
 
+@media (max-width: 767px) {
+  .reverse {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
 .main_row_div_font_odd-css {
   color: #ffffff;
   text-align: center;
