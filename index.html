@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" type="image/vnd.microsoft.icon" href="./img/icon/logo.png">
     <meta name="description" content="Somos una empresa especializada en la fabricación y reparación de muebles de madera, herrería, techos y más. ¡Visítanos!">
@@ -58,7 +59,7 @@
     <main>
         
         <div class="row main_row_div_odd-color container_size_css">
-            <div class="col-sm-12 col-md-5 ">
+            <div data-aos="fade-right" class="col-sm-12 col-md-5 ">
                 <img class="main_div_img" src="./img/trabajos/rejas/reja1.jpg" alt="reja1">
             </div>
             <div class="col-sm-12 col-md-7 ">
@@ -68,7 +69,7 @@
         </div>
 
         <div class="row main_row_div_pair-color container_size_css">
-            <div class="col-sm-12 col-md-6 ">
+            <div data-aos="fade-left" class="col-sm-12 col-md-6 ">
                 <h2 class="main_row_div_pair_font-css ">DECKS</h2>
                 <p class="main_row_div_pair_font-css index_p_css">Si estás buscando agregar un toque de calidez y estilo a tu hogar, considera la opción de un deck para tu pileta o cualquier espacio exterior. Podemos ayudarte a diseñar y construir un deck personalizado que se adapte perfectamente a tus necesidades y preferencias. Ya sea que busques un espacio para relajarte o para entretener a tus invitados, un deck puede ser la solución ideal para crear un ambiente acogedor y elegante en tu hogar. </p>
                 
@@ -121,6 +122,10 @@
         <footer class="container-fluid">
             <p>© 2022 Herrería WS Murua - Todos los derechos reservados. Desarrollado por <a href="https://github.com/MuruaSL">Murua Sergio Leonardo</a>.</p>
         </footer>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
