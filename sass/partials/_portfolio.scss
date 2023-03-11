@@ -1,6 +1,9 @@
 @use "./paleta";
 
-.portfolio-sizemaxmin{
-    min-width: 392px;
+@media (max-width: 767px){
+    .portfolio-sizemaxmin{
+    min-width: 300px;
     max-width: 500px;
+    }
 }
+    
