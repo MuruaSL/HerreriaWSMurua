@@ -35,3 +35,12 @@
     margin:calc(50vh - 220px) auto;
 }
 
+@media (max-width:320px){
+    .galardon_css{
+        max-width: 230px;
+        
+    }
+    h3{
+        font-size: 20px;
+    }
+}
