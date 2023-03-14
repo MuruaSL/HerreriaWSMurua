@@ -102,18 +102,21 @@ footer{
         .input_suscribe-css{
             border: 0;
             background-color: paleta.$color_white;
-            height: 20%;
+            height: 40px;
             width: 230px;
         }
         button{
+            
             padding-left: 5px;
             padding-right: 5px;
             text-transform: capitalize;
+            line-height: 18px;
+            
         }
         .button_newsletter-css {
             color: rgba(255, 255, 255, 0.9) ;
-            font-size: 20px;
-            font-weight: 500;
+            font-size: 18px;
+            font-weight: 490;
             padding: 0.5em 1.2em;
             background: paleta.$color_dark_grey;
             border: 2px solid;
@@ -136,6 +139,7 @@ footer{
         flex-direction: column;
         
     }
+    button{margin-top: 10px;}
 }
 
 .social_div{
