@@ -129,14 +129,23 @@ footer{
             width: 30px;
         }
 }
+@media (max-width: 600px){
+    
+    .parent_container_sitemap{
+        display: flex;
+        flex-direction: column;
+        
+    }
+}
+
 .social_div{
-            list-style-type:none;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
+    list-style-type:none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 
 .sticky{
