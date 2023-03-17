@@ -40,7 +40,8 @@
         font-size: 23px;
         margin-right: 5.5rem;
         margin-bottom: 2rem;
-        line-height: 50px;
+        line-height: 50px; 
+        padding-top: 1.2rem;
     
     }
     .vision_container{
@@ -115,7 +116,7 @@
         background-color:  paleta.$color_dark_grey;
         grid-area: 5 / 1 / 6 / 2;
         color: paleta.$color_white;
-        text-align: justify;
+        text-align: center;
     }
 
     .no_deco_list{
