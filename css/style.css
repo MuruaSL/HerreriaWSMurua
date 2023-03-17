@@ -206,6 +206,11 @@ h2 {
   }
 }
 /* -------------------------------------Para mobile ----------------------------------------- */
+@media screen and (min-width: 460px) {
+  .vision_container {
+    height: 300px;
+  }
+}
 @media screen and (max-width: 1000px) {
   .grid-master_whoweare {
     display: grid;
@@ -235,7 +240,7 @@ h2 {
     background-color: rgb(112, 112, 112);
     grid-area: 4/1/5/2;
     color: #ffffff;
-    height: 336px;
+    height: 370px;
     padding-right: 15px;
     padding-left: 15px;
   }

@@ -68,6 +68,12 @@
 
 }    
 /* -------------------------------------Para mobile ----------------------------------------- */
+
+@media screen and (min-width: 460px){
+    .vision_container{
+        height: 300px;}
+}
+
 @media screen and (max-width: 1000px){
 
     .grid-master_whoweare{
@@ -101,7 +107,7 @@
         background-color: paleta.$color_dark_grey;
         grid-area: 4 / 1 / 5 / 2;
         color: paleta.$color_white;
-        height: 336px;
+        height: 370px;
         padding-right: 15px;
         padding-left: 15px;
     }
