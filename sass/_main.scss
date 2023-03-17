@@ -13,6 +13,9 @@
 p{
     margin-bottom: 0px;
 }
+ol, ul {
+    padding-left: 0rem;
+}
 /* ----------------------------- reusable definitions--------------------------------------*/
 .align_end{
     text-align: end;
@@ -166,7 +169,6 @@ footer{
 /* -------------------------NAVBAR------------------------- */
 .nav_style_css{
     background-color:paleta.$color_grey;
-    height: 4.5rem;
     font-size: 1.3rem;
 }
 .navbar_without-line{
@@ -181,6 +183,33 @@ footer{
 .navbar_title-size{
     font-size: 1.7rem;
     margin-bottom: 0;
+}
+@media(max-width:990px){
+    .navbar_title-size{
+        font-size: 1.2rem;
+    }
+    .nav_style_css{
+        font-size: 1rem;
+
+    }
+}
+@media(min-width:990px){
+    .navbar_title-size{
+        font-size: 1.2em;
+    }
+    .nav_style_css{
+        font-size: 0.9rem;
+    }
+}
+@media(min-width:1100px){
+    .nav_style_css{
+        font-size: 1rem;
+    }
+}
+@media(min-width:1200px){
+    .nav_style_css{
+    font-size: 1.1rem;
+}
 }
 /* -------------------------MAIN_INDEX------------------------- */
 
