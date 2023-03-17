@@ -299,10 +299,41 @@ h2 {
 
 @media (max-width: 320px) {
   .galardon_css {
-    max-width: 230px;
+    max-width: 80%;
   }
   h3 {
     font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .galardon_css {
+    max-width: 80%;
+  }
+  .galardon_style {
+    width: 80vw;
+    height: 650px;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .galardon_style_odd {
+    width: 80vw;
+    height: 650px;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+  }
+}
+@media (min-width: 600px) {
+  .galardon_style {
+    width: 502px;
+    height: 560px;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .galardon_style_odd {
+    width: 502px;
+    height: 560px;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
   }
 }
 /* -----------------------------General Resets--------------------------------------*/
