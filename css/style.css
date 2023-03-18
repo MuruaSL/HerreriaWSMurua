@@ -611,11 +611,6 @@ footer {
     max-width: 100vw;
   }
 }
-@media (min-width: 767px) {
-  .conoce_mas {
-    margin-top: 1rem;
-  }
-}
 .main_row_div_font_odd-css {
   color: #ffffff;
   text-align: center;
