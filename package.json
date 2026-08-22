@@ -1,0 +1,8 @@
+{
+  "name": "herreria-ws-murua",
+  "private": true,
+  "description": "Sitio estatico de Herreria WS Murua. No requiere build: se sirve tal cual.",
+  "engines": {
+    "node": "24.x"
+  }
+}
