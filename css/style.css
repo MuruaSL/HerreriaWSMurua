@@ -641,3 +641,13 @@ footer {
   white-space: nowrap;
   border: 0;
 }
+
+/* Las imagenes del portfolio llevan atributos width/height para que el
+   navegador reserve el espacio y no salte el layout al cargarlas. Pero el
+   ancho real lo fija .w-100 (100% del contenedor), y sin height:auto el
+   navegador usa el height del atributo como alto fijo: la foto se estira.
+   height:auto hace que los atributos se usen solo como relacion de aspecto. */
+.carousel-item img,
+.portfolio-sizemaxmin {
+  height: auto;
+}
