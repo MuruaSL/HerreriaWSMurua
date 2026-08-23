@@ -161,11 +161,16 @@ RUBROS = [
             'cerramiento con la abertura que mejor funcione para el uso que le vas a dar.',
             'Es de los trabajos que más cambian una casa: un quincho abierto que se usa tres '
             'meses al año pasa a usarse todo el año.',
+            'Para las puertas y ventanas con vidrio fijo trabajamos con el mismo vidriero '
+            'que hace nuestros espejos, y los rieles de las corredizas son de buena '
+            'calidad: no se traban ni piden mantenimiento seguido.',
+            'También hicimos cerramientos para locales comerciales, no solo para casas.',
         ],
         incluye=['Cerramientos de galería y quincho', 'Puertas corredizas y tipo granero',
                  'Ventanas y puertas de hierro', 'Mamparas para baño',
                  'Frentes de asador y puertas guillotina',
-                 'Puertas con material desplegado (rejilla) para ventilación'],
+                 'Puertas con material desplegado (rejilla) para ventilación',
+                 'Puertas y ventanas con vidrio fijo'],
     ),
     dict(
         slug='techos-y-galerias',
@@ -264,10 +269,16 @@ RUBROS = [
             'Fabricamos parrillas a medida, accesorios de asador y piezas de hierro para la '
             'cocina. Si tenés el asador construido y no encontrás la parrilla del tamaño '
             'justo, la hacemos.',
+            'El material se elige según el uso: hierro común o acero inoxidable, con la '
+            'durabilidad y el presupuesto que busques. También hacemos parrillas con '
+            'sistema de poleas, para que suban y bajen con un solo dedo.',
             'Se combina muy bien con el frente de asador, que hacemos en el mismo trabajo.',
         ],
-        incluye=['Parrillas a medida, con varillas o chapa calada', 'Accesorios de asador',
-                 'Piezas de hierro para cocina', 'Complementos de frente de asador'],
+        incluye=['Parrillas a medida, con varillas o chapa calada',
+                 'Parrilla con sistema de poleas (sube y baja)',
+                 'En hierro común o acero inoxidable',
+                 'Accesorios de asador', 'Piezas de hierro para cocina',
+                 'Complementos de frente de asador'],
     ),
 ]
 
