@@ -262,8 +262,8 @@ RUBROS = [
         carpetas=['elemCocina'],
         resumen='Parrillas, accesorios de asador y piezas de hierro para la cocina.',
         titulo='Parrillas y Elementos de Cocina en Hierro | Córdoba',
-        meta='Parrillas, accesorios de asador y elementos de cocina en hierro, hechos a '
-             'medida en Córdoba.',
+        meta='Parrillas a medida en hierro o acero inoxidable, con sistema de poleas '
+             'opcional. Accesorios de asador y piezas de cocina, hechos en Córdoba.',
         h1='Elementos de cocina',
         bajada='Parrillas, accesorios de asador y piezas de hierro para la cocina, '
                'hechas en la medida de tu asador.',
@@ -340,7 +340,19 @@ ICONO_FB = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0
             '.4v7A10 10 0 0 0 22 12z"/></svg>')
 
 
-def cabeza(base, titulo, meta, ruta, og_img, extra=''):
+def cabeza(base, titulo, meta, ruta, og_img, extra='', miga=None):
+
+    breadcrumb = f'''<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "{SITIO}/"}},
+    {{"@type": "ListItem", "position": 2, "name": "{miga}", "item": "{SITIO}{ruta}"}}
+  ]
+}}
+</script>
+''' if miga else ''
     return f'''<!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -370,7 +382,7 @@ def cabeza(base, titulo, meta, ruta, og_img, extra=''):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Karla:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="{url(base, 'css/site.css')}">
-{extra}</head>
+{extra}{breadcrumb}</head>
 <body>
 <a class="saltar" href="#contenido">Saltar al contenido</a>
 '''
@@ -543,9 +555,9 @@ def pagina_inicio():
     hero = 'img/trabajos/fotos_index/reja_index.webp'
     h = cabeza(base,
         'Herrería y Carpintería a Medida en Córdoba | WS Murua',
-        'Herrería y carpintería a medida en Córdoba: rejas, portones, cerramientos, techos, '
-        'decks, espejos y muebles en hierro y madera. Presupuesto sin cargo por WhatsApp.',
-        '/', hero, extra=SCHEMA)
+        'Herrería y carpintería a medida en Córdoba: rejas, cerramientos, techos, decks '
+        'y muebles en hierro y madera. Presupuesto sin cargo por WhatsApp.',
+        '/', '/' + hero, extra=SCHEMA)
     h += cabecera(base, 'inicio')
     h += f'''<main id="contenido">
 
@@ -634,7 +646,7 @@ def pagina_rubro(r):
     parrafos = '\n'.join(f'        <p>{p}</p>' for p in r['texto'])
     wa_rubro = wa(f'Hola Herrería WS Murua, quería consultarles por {r["nombre"].lower()}.')
 
-    h = cabeza(base, r['titulo'], r['meta'], f'/pages/{r["slug"]}.html', '/' + hero)
+    h = cabeza(base, r['titulo'], r['meta'], f'/pages/{r["slug"]}.html', '/' + hero, miga=r['nombre'])
     h += cabecera(base, r['slug'])
     h += f'''<main id="contenido">
 
@@ -734,7 +746,7 @@ def pagina_trabajos():
     h = cabeza(base, 'Trabajos Realizados | Herrería WS Murua — Córdoba',
         f'Galería completa de {total} trabajos realizados en Córdoba: rejas, muebles a medida, '
         'cerramientos, techos, espejos, decks y elementos de cocina.',
-        '/pages/trabajos.html', '/' + hero)
+        '/pages/trabajos.html', '/' + hero, miga='Trabajos realizados')
     h += cabecera(base, 'trabajos')
     h += f'''<main id="contenido">
 
@@ -779,7 +791,7 @@ def pagina_taller():
     h = cabeza(base, 'El Taller | Herrería WS Murua — Córdoba',
         'Herrería WS Murua es un taller familiar de Córdoba. Nuestra historia, cómo trabajamos '
         'y la distinción Herrero Amigo de ACERCO.',
-        '/pages/taller.html', '/' + hero)
+        '/pages/taller.html', '/' + hero, miga='El taller')
     h += cabecera(base, 'taller')
     h += f'''<main id="contenido">
 
@@ -988,7 +1000,7 @@ def pagina_contacto():
     h = cabeza(base, 'Contacto y Presupuestos | Herrería WS Murua — Córdoba',
         f'Pedí tu presupuesto sin cargo de herrería o carpintería en Córdoba. Escribinos por '
         f'WhatsApp al {TEL_TXT}.',
-        '/pages/contacto.html', '/' + hero)
+        '/pages/contacto.html', '/' + hero, miga='Contacto')
     h += cabecera(base, 'contacto')
     h += f'''<main id="contenido">
 
@@ -1063,6 +1075,41 @@ def pagina_contacto():
     return 'pages/contacto.html', h
 
 
+# ------------------------------------------------------------------ sitemap
+# Generado a partir de la MISMA lista de paginas que se escriben a disco, para
+# que nunca quede desincronizado (antes era un archivo aparte y se desactualizaba
+# solo con acordarse de tocarlo a mano).
+PRIORIDAD = {
+    'index.html': '1.0',
+    'pages/trabajos.html': '0.9',
+    'pages/contacto.html': '0.8',
+    'pages/taller.html': '0.7',
+}
+
+
+def generar_sitemap(rutas):
+    import datetime
+    hoy = datetime.date.today().isoformat()
+    # Los primeros 4 rubros (mayor intencion de compra) van en 0.9, el resto en 0.8
+    slugs_top = {r['slug'] for r in RUBROS[:4]}
+    partes = ['<?xml version="1.0" encoding="UTF-8"?>',
+              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for ruta in rutas:
+        loc = SITIO + ('/' if ruta == 'index.html' else '/' + ruta)
+        if ruta in PRIORIDAD:
+            prioridad = PRIORIDAD[ruta]
+        elif any(f'/{s}.html' in ruta for s in slugs_top):
+            prioridad = '0.9'
+        else:
+            prioridad = '0.8'
+        partes += ['  <url>', f'    <loc>{loc}</loc>', f'    <lastmod>{hoy}</lastmod>',
+                   f'    <priority>{prioridad}</priority>', '  </url>']
+    partes.append('</urlset>')
+    with open('sitemap.xml', 'w', encoding='utf-8') as fh:
+        fh.write('\n'.join(partes) + '\n')
+    print(f'  sitemap.xml regenerado con {len(rutas)} urls')
+
+
 # ------------------------------------------------------------------ main
 def main():
     paginas = [pagina_inicio(), pagina_trabajos(), pagina_taller(), pagina_contacto()]
@@ -1073,6 +1120,7 @@ def main():
             fh.write(contenido)
         print(f'  escrita  {ruta:44s} {len(contenido)//1024:3d} KB')
     print(f'\ntotal: {len(paginas)} paginas')
+    generar_sitemap([ruta for ruta, _ in paginas])
 
 
 if __name__ == '__main__':

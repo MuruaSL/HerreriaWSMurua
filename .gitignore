@@ -3,3 +3,5 @@ package-lock.json
 .DS_Store
 .vercel
 _fotos_nuevas/
+__pycache__/
+*.pyc
