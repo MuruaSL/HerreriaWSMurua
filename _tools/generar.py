@@ -20,6 +20,12 @@ el mismo menu y el mismo pie, que es lo que hizo que el pie dijera "2022"
 durante cuatro anios.
 """
 import os, re, html
+import importlib.util as _ilu
+
+_spec = _ilu.spec_from_file_location('alt_fotos', os.path.join(os.path.dirname(__file__), 'alt_fotos.py'))
+_alt_fotos = _ilu.module_from_spec(_spec)
+_spec.loader.exec_module(_alt_fotos)
+ALT_FOTOS = _alt_fotos.ALT
 
 RAIZ = '/Users/leonardo/Desktop/HerreriaWSMurua'
 os.chdir(RAIZ)
@@ -310,7 +316,10 @@ def url(base, ruta):
 
 
 def alt_de(ruta, rubro):
-    return f'Trabajo de {rubro.lower()} realizado por Herrería WS Murua en Córdoba'
+    """Texto alternativo especifico por foto (escrito a mano, inspeccionando cada
+    imagen). Si alguna foto nueva no esta todavia en el mapa, cae a una
+    descripcion generica para no dejar el atributo alt vacio."""
+    return ALT_FOTOS.get(ruta, f'Trabajo de {rubro.lower()} realizado por Herrería WS Murua en Córdoba')
 
 
 ICONO_WA = ('<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 3C8.8 3 3 8.8 3 '
@@ -638,7 +647,7 @@ def pagina_rubro(r):
     otros = [x for x in RUBROS if x['slug'] != r['slug']][:3]
     otros_html = '\n'.join(
         f'''      <a class="rubro" href="{url(base, 'pages/' + o['slug'] + '.html')}">
-        <img class="rubro__foto" src="{url(base, (fotos_de(o['carpetas']) or [hero])[0])}" alt="{alt_de('', o['nombre'])}" width="1200" height="1200" loading="lazy" decoding="async">
+        <img class="rubro__foto" src="{url(base, (fotos_de(o['carpetas']) or [hero])[0])}" alt="{alt_de((fotos_de(o['carpetas']) or [hero])[0], o['nombre'])}" width="1200" height="1200" loading="lazy" decoding="async">
         <div class="rubro__cuerpo"><div class="rubro__t">{o['nombre']}</div>
         <span class="rubro__mas">Ver trabajos &rarr;</span></div>
       </a>''' for o in otros)
