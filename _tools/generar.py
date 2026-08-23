@@ -811,10 +811,10 @@ def pagina_taller():
       <div class="citas">
 {CITAS_TODAS}
       </div>
-      <div class="duo" style="margin-top:2.5rem">
+      <figure class="captura-testimonio" style="margin-top:2.5rem">
         <img src="{url(base, 'img/galardones/4.webp')}" alt="Clienta agradeciendo en Instagram el escritorio que le fabricó Herrería WS Murua" width="1200" height="1200" loading="lazy" decoding="async">
-        <img src="{url(base, 'img/galardones/2.webp')}" alt="Barrio privado de Córdoba donde trabaja habitualmente Herrería WS Murua" width="1200" height="1200" loading="lazy" decoding="async">
-      </div>
+        <figcaption>Así nos lo agradeció una clienta en su Instagram.</figcaption>
+      </figure>
     </div>
   </section>
 
