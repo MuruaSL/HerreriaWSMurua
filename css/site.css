@@ -413,6 +413,18 @@ p { margin: 0; }
   margin-top: .8rem; color: var(--ink-3); font-size: var(--step--1);
 }
 
+/* Nota o tip suelto dentro de una seccion, a todo el ancho disponible */
+.nota {
+  margin-top: 2rem; padding: 1.4rem 1.6rem;
+  background: var(--surface); border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+}
+.nota__titulo {
+  font-family: Archivo, sans-serif; font-weight: 800; font-size: 1rem;
+  color: var(--accent-text);
+}
+.nota__texto { color: var(--ink-2); margin-top: .5rem; }
+
 /* Mencion de un tercero en redes: enlaza a la publicacion original en vez de
    rehospedar su contenido. */
 .mencion {
