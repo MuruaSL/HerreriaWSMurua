@@ -46,6 +46,7 @@ WA_GENERAL = wa('Hola Herrería WS Murua, vi la web y quería consultarles por u
 # Ficha de Google del negocio. El CID sale del embed del mapa que ya usaba la
 # web vieja; en decimal arma un enlace directo a la ficha y sus resenias.
 GOOGLE_RESENAS = 'https://maps.google.com/?cid=%d' % int('46dbd73b835083a6', 16)
+MENCION_REEL = 'https://www.instagram.com/reel/C15YsbaxzQX/'
 
 # Resenias publicas de la ficha de Google del negocio, con nombre y estrellas.
 # Nota: no se marcan como AggregateRating en el schema. Google no permite
@@ -813,6 +814,23 @@ def pagina_taller():
       <div class="duo" style="margin-top:2.5rem">
         <img src="{url(base, 'img/galardones/4.webp')}" alt="Clienta agradeciendo en Instagram el escritorio que le fabricó Herrería WS Murua" width="1200" height="1200" loading="lazy" decoding="async">
         <img src="{url(base, 'img/galardones/2.webp')}" alt="Barrio privado de Córdoba donde trabaja habitualmente Herrería WS Murua" width="1200" height="1200" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" style="background: var(--surface-2);">
+    <div class="wrap">
+      <p class="eyebrow">Menciones</p>
+      <h2 class="titulo-seccion">Nos nombraron en Instagram</h2>
+      <div class="mencion revelar">
+        <div class="mencion__cuerpo">
+          <p class="mencion__quien">Nazarena Vélez <span class="mencion__verificada" title="Cuenta verificada" aria-label="Cuenta verificada">✓</span></p>
+          <p class="mencion__texto">Nos mencionó en un video de su cuenta, y le agradecimos
+            desde la nuestra. Está publicado en su perfil de Instagram.</p>
+          <a class="btn btn--linea" href="{MENCION_REEL}" target="_blank" rel="noopener">
+            Ver la publicación en Instagram &rarr;
+          </a>
+        </div>
       </div>
     </div>
   </section>

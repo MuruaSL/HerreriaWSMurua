@@ -402,6 +402,25 @@ p { margin: 0; }
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 
+/* Mencion de un tercero en redes: enlaza a la publicacion original en vez de
+   rehospedar su contenido. */
+.mencion {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 1.6rem 1.8rem;
+  max-width: 32rem;
+}
+.mencion__quien {
+  font-family: Archivo, sans-serif; font-weight: 800; font-size: 1.05rem;
+  display: flex; align-items: center; gap: .4rem;
+}
+.mencion__verificada {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.1rem; height: 1.1rem; border-radius: 50%;
+  background: var(--accent); color: var(--accent-ink); font-size: .68rem; line-height: 1;
+}
+.mencion__texto { color: var(--ink-2); margin-top: .6rem; }
+.mencion .btn { margin-top: 1.1rem; }
+
 /* ------------------------------- dos columnas ----------------------------- */
 .duo {
   display: grid; gap: clamp(1.5rem, 1rem + 3vw, 3.5rem);
