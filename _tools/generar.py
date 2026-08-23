@@ -36,6 +36,26 @@ def wa(texto):
 
 WA_GENERAL = wa('Hola Herrería WS Murua, vi la web y quería consultarles por un trabajo.')
 
+# Ficha de Google del negocio. El CID sale del embed del mapa que ya usaba la
+# web vieja; en decimal arma un enlace directo a la ficha y sus resenias.
+GOOGLE_RESENAS = 'https://maps.google.com/?cid=%d' % int('46dbd73b835083a6', 16)
+
+# Testimonios reales de clientes, tomados de los comentarios publicos del
+# Instagram del negocio (estaban en img/galardones/3.webp, sin usar en la web).
+# Se atribuyen de forma generica porque los usuarios estan tachados en la captura.
+TESTIMONIOS = [
+    ('Gracias a ustedes Karina y Walter! Quedó preciosa!', 'Clienta en Instagram'),
+    ('Una maravilla! Todo queda tierno en esa parrilla.', 'Cliente en Instagram'),
+    ('Gracias a uds! Es hermoso mi recibidor.', 'Clienta en Instagram'),
+    ('Bellísimo trabajo chicos, los felicito.', 'Cliente en Instagram'),
+]
+
+CITAS = '\n'.join(
+    f'''        <figure class="cita revelar">
+          <blockquote>&ldquo;{t}&rdquo;</blockquote>
+          <figcaption>{a}</figcaption>
+        </figure>''' for t, a in TESTIMONIOS)
+
 # --------------------------------------------------------------------------
 # Rubros. El orden es el del sitio: intencion de compra primero, respaldo
 # fotografico como desempate.
@@ -483,6 +503,7 @@ def pagina_inicio():
     <div class="tira__item"><div class="tira__d">Presupuesto sin cargo</div><div class="tira__t">Te pasamos el precio antes de que decidas</div></div>
     <div class="tira__item"><div class="tira__d">Todo a medida</div><div class="tira__t">Fabricación propia, sin medidas estándar</div></div>
     <div class="tira__item"><div class="tira__d">Herrero Amigo</div><div class="tira__t">Distinción de ACERCO</div></div>
+    <div class="tira__item"><div class="tira__d">Tres barrios privados</div><div class="tira__t">Somos su herrería de confianza</div></div>
     <div class="tira__item"><div class="tira__d">Taller familiar</div><div class="tira__t">Hablás siempre con quien hace el trabajo</div></div>
   </div>
 
@@ -502,18 +523,10 @@ def pagina_inicio():
       <p class="eyebrow">Lo que dicen</p>
       <h2 class="titulo-seccion">Clientes de Córdoba</h2>
       <div class="citas">
-        <figure class="cita revelar">
-          <blockquote>&ldquo;Herrero de confianza.&rdquo;</blockquote>
-          <figcaption>Cliente de Córdoba</figcaption>
-        </figure>
-        <figure class="cita revelar">
-          <blockquote>&ldquo;Orgullosos de ser nombrados por ACERCO como colaboradores destacados.&rdquo;</blockquote>
-          <figcaption>Distinción Herrero Amigo · ACERCO</figcaption>
-        </figure>
-        <figure class="cita revelar">
-          <blockquote>&ldquo;Publicamos cada trabajo terminado en Instagram.&rdquo;</blockquote>
-          <figcaption>@herreria_wsmurua · 1.777 seguidores</figcaption>
-        </figure>
+{CITAS}
+      </div>
+      <div style="margin-top:2rem">
+        <a class="btn btn--linea" href="{GOOGLE_RESENAS}" target="_blank" rel="noopener">Ver reseñas en Google &rarr;</a>
       </div>
     </div>
   </section>
@@ -690,9 +703,6 @@ def pagina_trabajos():
 def pagina_taller():
     base = '../'
     hero = 'img/trabajos/muebles/' + sorted(os.listdir('img/trabajos/muebles'))[3]
-    acerco = 'img/trabajos/otros/herreroamigo.webp'
-    if not os.path.isfile(acerco):
-        acerco = 'img/galardones/1.webp'
     muestra = (fotos_de(['rejas'])[:2] + fotos_de(['muebles'])[:2]
                + fotos_de(['techos'])[:1] + fotos_de(['espejos'])[:1])
 
@@ -732,7 +742,7 @@ def pagina_taller():
   <section class="seccion" style="background: var(--surface-2);">
     <div class="wrap duo">
       <div>
-        <img src="{url(base, acerco)}" alt="Distinción Herrero Amigo otorgada a Herrería WS Murua por ACERCO" width="1200" height="1200" loading="lazy" decoding="async">
+        <img src="{url(base, 'img/galardones/1.webp')}" alt="ACERCO distingue a Herrería Murua como Herrero Amigo, sobre un frente de asador fabricado por el taller" width="1200" height="1200" loading="lazy" decoding="async">
       </div>
       <div class="prosa">
         <p class="eyebrow">Reconocimiento</p>
@@ -740,7 +750,25 @@ def pagina_taller():
         <p>ACERCO nos nombró colaboradores destacados con la distinción
           <strong>Herrero Amigo</strong>. Es un reconocimiento del sector, no una
           autodefinición: lo da una empresa que trabaja con herreros de toda la provincia.</p>
-        <p>Nuestros clientes lo resumen más corto: <em>herrero de confianza</em>.</p>
+        <p>También somos los herreros de confianza de
+          <strong>tres barrios privados de Córdoba</strong>, que es la forma más concreta
+          que tenemos de decir que el trabajo se sostiene en el tiempo.</p>
+        <p><a href="{GOOGLE_RESENAS}" target="_blank" rel="noopener">Mirá nuestras reseñas en Google &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="wrap">
+      <p class="eyebrow">Lo que dicen</p>
+      <h2 class="titulo-seccion">Clientes que nos escribieron</h2>
+      <p class="bajada">Comentarios que nos dejaron en Instagram después de entregar el trabajo.</p>
+      <div class="citas">
+{CITAS}
+      </div>
+      <div class="duo" style="margin-top:2.5rem">
+        <img src="{url(base, 'img/galardones/4.webp')}" alt="Clienta agradeciendo en Instagram el escritorio que le fabricó Herrería WS Murua" width="1200" height="1200" loading="lazy" decoding="async">
+        <img src="{url(base, 'img/galardones/2.webp')}" alt="Barrio privado de Córdoba donde trabaja habitualmente Herrería WS Murua" width="1200" height="1200" loading="lazy" decoding="async">
       </div>
     </div>
   </section>

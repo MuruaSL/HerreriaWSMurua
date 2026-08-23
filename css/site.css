@@ -213,11 +213,16 @@ p { margin: 0; }
   letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
 }
 
-.nav { display: flex; align-items: center; gap: .35rem; }
+.nav { display: flex; align-items: stretch; gap: .35rem; }
 .nav a {
   font-family: Archivo, sans-serif; font-weight: 600;
   font-size: .93rem; color: var(--ink-2);
   text-decoration: none; padding: .55rem .7rem; border-radius: var(--radius);
+  /* Varios rubros ocupan dos renglones ("Rejas y portones", "Techos y
+     galerías"). Centrados quedan parejos entre sí; alineados a la izquierda
+     el menú se ve desprolijo. */
+  display: flex; flex-direction: column; justify-content: center;
+  text-align: center; line-height: 1.25; text-wrap: balance;
 }
 .nav a:hover { color: var(--ink); background: var(--surface-2); }
 .nav a[aria-current="page"] { color: var(--ink); }
@@ -246,7 +251,12 @@ p { margin: 0; }
     box-shadow: var(--shadow);
   }
   .nav[hidden] { display: none; }
-  .nav a { padding: .85rem .25rem; font-size: 1.05rem; border-bottom: 1px solid var(--line); }
+  /* En el menú desplegable son una lista vertical: centrados quedarían raros */
+  .nav a {
+    padding: .85rem .25rem; font-size: 1.05rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left; align-items: flex-start;
+  }
   .nav a[aria-current="page"]::after { display: none; }
   .nav a[aria-current="page"] { color: var(--accent-text); }
   .cabecera .btn--principal { display: none; }
