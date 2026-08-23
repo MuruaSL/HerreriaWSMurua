@@ -164,7 +164,9 @@ RUBROS = [
             'Para las puertas y ventanas con vidrio fijo trabajamos con el mismo vidriero '
             'que hace nuestros espejos, y los rieles de las corredizas son de buena '
             'calidad: no se traban ni piden mantenimiento seguido.',
-            'También hicimos cerramientos para locales comerciales, no solo para casas.',
+            'Hicimos de cero la Proveeduría Shizen, en un country de Córdoba: techo, piso, '
+            'deck, y toda la estructura con paredes de fibrocemento. Si el proyecto es '
+            'grande, lo armamos completo.',
         ],
         incluye=['Cerramientos de galería y quincho', 'Puertas corredizas y tipo granero',
                  'Ventanas y puertas de hierro', 'Mamparas para baño',
@@ -821,6 +823,11 @@ def pagina_taller():
         <p>También somos los herreros de confianza de
           <strong>tres barrios privados de Córdoba</strong>, que es la forma más concreta
           que tenemos de decir que el trabajo se sostiene en el tiempo.</p>
+        <p>Hicimos trabajos para comercios y countries, no solo para casas. La
+          <strong>Proveeduría Shizen</strong> la construimos de cero: techo, piso, deck,
+          estructura y paredes con placas de fibrocemento. Y en el country
+          <strong>Campo de Vuelo</strong> hicimos la cartelería, la refacción de la fachada
+          y otros trabajos en madera.</p>
         <p><a href="{GOOGLE_RESENAS}" target="_blank" rel="noopener">Mirá nuestras reseñas en Google &rarr;</a></p>
       </div>
     </div>
