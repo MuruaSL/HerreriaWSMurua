@@ -651,3 +651,118 @@ footer {
 .portfolio-sizemaxmin {
   height: auto;
 }
+
+
+/* ---------------------------- WHATSAPP FLOTANTE ---------------------------- */
+/* Los clientes ya consultan por WhatsApp, pero el link vivia solo en el pie.
+   Este boton lo deja al alcance en cualquier punto del scroll. */
+.wa-flotante {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1050;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 999px;
+  background-color: #25D366;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.wa-flotante:hover,
+.wa-flotante:focus-visible {
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.38);
+}
+.wa-flotante svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+/* En pantallas chicas queda solo el circulo para no tapar contenido */
+@media (max-width: 600px) {
+  .wa-flotante {
+    padding: 0.9rem;
+  }
+  .wa-flotante__texto {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-flotante {
+    transition: none;
+  }
+}
+
+/* ------------------------- LEGIBILIDAD EN MOBILE --------------------------- */
+/* El texto del home estaba en 1.5rem centrado: en 375px daba renglones de
+   pocas palabras y empujaba el contacto muy abajo. */
+@media (max-width: 767px) {
+  .index_p_css {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    text-align: left;
+    padding: 1rem 1.25rem;
+  }
+  .main_row_div_font_odd-css,
+  .main_row_div_pair_font-css {
+    padding-top: 1.25rem;
+  }
+  .whoweare_p_css {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+  .conoce_mas,
+  .conoce_mas2 {
+    font-size: 1.5rem;
+    height: auto;
+    padding-bottom: 2rem;
+  }
+  .conoce_mas p {
+    padding-top: 2.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+/* --------------------------- FORMULARIO DE CONTACTO ------------------------ */
+/* El alto fijo de .form no entra con un textarea real */
+.form {
+  height: auto;
+  margin: 3rem auto;
+}
+.contacto_p:before {
+  content: attr(data-label);
+}
+.form textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: none;
+  outline: none;
+  border: 0;
+  border-bottom: 2px solid #9C9999;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.3s;
+  resize: vertical;
+  min-height: 80px;
+}
+.form textarea:focus {
+  border-bottom: 2px solid rgb(112, 112, 112);
+}
+.form__ayuda {
+  clear: both;
+  display: block;
+  padding-top: 3.2rem;
+  font-size: 0.85rem;
+  color: rgb(112, 112, 112);
+}
