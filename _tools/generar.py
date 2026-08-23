@@ -185,9 +185,13 @@ RUBROS = [
             'define con vos: cenefa gruesa o liviana, chapa pintada del color que elijas.',
             'Va desde el techo simple para cubrir un auto hasta la galería completa con '
             'columnas, que es donde después entra el asador o el deck.',
+            'Si te preocupa por dónde escurre la lluvia, podemos sumar zinguería y '
+            'canaletas de chapa hechas a medida del techo. Es un adicional sobre el '
+            'techo base, no algo que venga incluido siempre.',
         ],
         incluye=['Techos de cochera', 'Galerías y aleros', 'Estructuras para patio',
-                 'Cenefas y terminaciones', 'Chapa pintada a elección'],
+                 'Cenefas y terminaciones', 'Chapa pintada a elección',
+                 'Zinguería y canaletas a medida (opcional)'],
     ),
     dict(
         slug='espejos',
@@ -204,12 +208,17 @@ RUBROS = [
         texto=[
             'Fabricamos espejos de cuerpo entero, de baño, de arco y con formas especiales, '
             'siempre con marco de hierro hecho a medida. También hacemos espejos '
-            'retroiluminados, que quedan muy bien en baños y entradas.',
+            'retroiluminados con luz LED, que quedan muy bien en baños y entradas.',
+            'Trabajamos con un vidriero de primera calidad, que además de las formas '
+            'clásicas hace diseños especiales: espejos tipo ameba o repartidos en piezas '
+            'más chicas. También se puede pedir el vidrio con alguna característica '
+            'particular, como espejado o ahumado; consultanos según lo que busques.',
             'Al ser fabricación propia, la medida la ponés vos: no dependés de lo que haya '
             'en stock.',
         ],
         incluye=['Espejos de cuerpo entero', 'Espejos de baño y tocador',
-                 'Marcos tipo arco y formas especiales', 'Espejos retroiluminados',
+                 'Marcos tipo arco y formas especiales', 'Espejos retroiluminados con LED',
+                 'Diseños especiales: forma ameba, en piezas repartidas',
                  'Cualquier medida a pedido'],
     ),
     dict(
@@ -228,8 +237,12 @@ RUBROS = [
             'Hacemos decks para pileta, patio y galería, con estructura tratada para '
             'intemperie y la terminación que elijas. Resolvemos también los desniveles, '
             'los escalones y los bordes de pileta.',
-            'Es un trabajo estacional: si lo querés listo para el verano, conviene '
-            'encargarlo con tiempo.',
+            'Es un trabajo con mucha demanda en temporada, y no manejamos una '
+            'anticipación fija: cuanto antes nos consultes, mejor margen tenemos para '
+            'coordinar la fecha.',
+            'La madera necesita mantenimiento: un hidrolaqueado (o similar) una vez '
+            'por año la mantiene protegida y con buen color. No es algo que se ponga y '
+            'se olvide.',
         ],
         incluye=['Decks perimetrales de pileta', 'Decks de patio y galería',
                  'Escalones y desniveles', 'Estructura tratada para intemperie',
