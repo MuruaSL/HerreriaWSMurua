@@ -28,6 +28,13 @@ SITIO = 'https://herreria-ws-murua.vercel.app'
 TEL_TXT = '351 509-0016'
 WA_NUM = '5493515090016'
 
+# Direccion de la ficha de Google. La web nunca la tuvo escrita: solo estaba
+# implicita en el embed del mapa, y Google no puede leer una direccion de ahi.
+CALLE = 'Felipe Boero 2318'
+CP = 'X5010'
+CIUDAD = 'Córdoba'
+DIRECCION = f'{CALLE}, {CP} {CIUDAD}, Argentina'
+
 
 def wa(texto):
     from urllib.parse import quote
@@ -40,21 +47,42 @@ WA_GENERAL = wa('Hola Herrería WS Murua, vi la web y quería consultarles por u
 # web vieja; en decimal arma un enlace directo a la ficha y sus resenias.
 GOOGLE_RESENAS = 'https://maps.google.com/?cid=%d' % int('46dbd73b835083a6', 16)
 
-# Testimonios reales de clientes, tomados de los comentarios publicos del
-# Instagram del negocio (estaban en img/galardones/3.webp, sin usar en la web).
-# Se atribuyen de forma generica porque los usuarios estan tachados en la captura.
+# Resenias publicas de la ficha de Google del negocio, con nombre y estrellas.
+# Nota: no se marcan como AggregateRating en el schema. Google no permite
+# publicar en tu propio sitio, como datos estructurados, resenias tomadas de
+# otra plataforma; se muestran como texto y se enlaza la ficha original.
+PUNTAJE = '4,7'
+CANT_RESENAS = 13
+
 TESTIMONIOS = [
-    ('Gracias a ustedes Karina y Walter! Quedó preciosa!', 'Clienta en Instagram'),
-    ('Una maravilla! Todo queda tierno en esa parrilla.', 'Cliente en Instagram'),
-    ('Gracias a uds! Es hermoso mi recibidor.', 'Clienta en Instagram'),
-    ('Bellísimo trabajo chicos, los felicito.', 'Cliente en Instagram'),
+    ('El trabajo realizado es impecable con excelentes terminaciones, son muy '
+     'profesionales y confiables, realizan trabajos personalizados hermosos y '
+     'con excelentes precios', 'Rocío Sosa', 'Google'),
+    ('Nos hicieron un portón automático desde cero. Muy buen precio. '
+     'Gente seria. Lo recomiendo.', 'Fer Maristany', 'Google'),
+    ('Los trabajos son muy buenos. Creativos. El precio acorde al trabajo. '
+     'Recomendables!', 'Laura Viviana Olmedo', 'Google'),
+    ('Excelentes, responsables, cumplidores, detallistas, para recomendar!',
+     'Andrea Barrionuevo', 'Google'),
+    ('Calidad y responsabilidad, precio razonable.', 'Kary Guzmán', 'Google'),
+    ('Gente seria y responsable.', 'Miguel Emilio Maristany', 'Google'),
 ]
 
-CITAS = '\n'.join(
-    f'''        <figure class="cita revelar">
+ESTRELLAS = '<span class="cita__estrellas" aria-hidden="true">★★★★★</span>'
+
+
+def citas_html(cuantas=None):
+    sel = TESTIMONIOS[:cuantas] if cuantas else TESTIMONIOS
+    return '\n'.join(
+        f'''        <figure class="cita revelar">
+          {ESTRELLAS}<span class="visually-hidden">5 de 5 estrellas</span>
           <blockquote>&ldquo;{t}&rdquo;</blockquote>
-          <figcaption>{a}</figcaption>
-        </figure>''' for t, a in TESTIMONIOS)
+          <figcaption>{a} · reseña en {f}</figcaption>
+        </figure>''' for t, a, f in sel)
+
+
+CITAS = citas_html(3)
+CITAS_TODAS = citas_html()
 
 # --------------------------------------------------------------------------
 # Rubros. El orden es el del sitio: intencion de compra primero, respaldo
@@ -80,8 +108,11 @@ RUBROS = [
             'Trabajamos el hierro con torsionados, macizos y detalles intermedios. '
             'Si tenés una idea o una foto de referencia, la usamos de punto de partida. '
             'Si no la tenés, te mostramos lo que hicimos y arrancamos de ahí.',
+            'También hacemos portones automáticos desde cero, y adaptamos a corredizo '
+            'un portón que ya tengas.',
         ],
         incluye=['Rejas de frente y de ventana', 'Portones corredizos y de abrir',
+                 'Portones automáticos, hechos desde cero',
                  'Adaptación de portones existentes a corredizo',
                  'Barandas de escalera y balcón', 'Rejas anti-perro y con detalles torsionados'],
     ),
@@ -229,15 +260,18 @@ OTROS = ['otros_trabajos']
 # --------------------------------------------------------------------------
 
 def fotos_de(carpetas):
-    out = []
+    """Fotos de un rubro. Las que llevan el anio en el nombre son las ultimas
+    incorporadas y van primero: es el trabajo mas reciente del taller."""
+    nuevas, viejas = [], []
     for c in carpetas:
         d = f'img/trabajos/{c}'
         if not os.path.isdir(d):
             continue
         for f in sorted(os.listdir(d)):
-            if f.lower().endswith('.webp'):
-                out.append(f'{d}/{f}')
-    return out
+            if not f.lower().endswith('.webp'):
+                continue
+            (nuevas if '-2026-' in f else viejas).append(f'{d}/{f}')
+    return nuevas + viejas
 
 
 def url(base, ruta):
@@ -364,7 +398,7 @@ def pie(base):
       <h2>Escribinos</h2>
       <ul>
         <li><a href="{WA_GENERAL}" target="_blank" rel="noopener">WhatsApp {TEL_TXT}</a></li>
-        <li>Córdoba, Argentina</li>
+        <li><a href="{GOOGLE_RESENAS}" target="_blank" rel="noopener">{DIRECCION}</a></li>
         <li>Presupuesto sin cargo</li>
       </ul>
       <div class="pie__social">
@@ -442,7 +476,7 @@ SCHEMA = '''<script type="application/ld+json">
   "image": "%(s)s/img/trabajos/fotos_index/reja_index.webp",
   "telephone": "+%(t)s",
   "priceRange": "$$",
-  "address": { "@type": "PostalAddress", "addressLocality": "Córdoba", "addressRegion": "Córdoba", "addressCountry": "AR" },
+  "address": { "@type": "PostalAddress", "streetAddress": "%(calle)s", "postalCode": "%(cp)s", "addressLocality": "Córdoba", "addressRegion": "Córdoba", "addressCountry": "AR" },
   "geo": { "@type": "GeoCoordinates", "latitude": -31.4356545, "longitude": -64.2456634 },
   "areaServed": { "@type": "City", "name": "Córdoba" },
   "sameAs": ["https://www.instagram.com/herreria_wsmurua/", "https://www.facebook.com/HerreriaMuruaHM"],
@@ -452,7 +486,7 @@ SCHEMA = '''<script type="application/ld+json">
   }
 }
 </script>
-''' % dict(s=SITIO, t=WA_NUM, items=', '.join(
+''' % dict(s=SITIO, t=WA_NUM, calle=CALLE, cp=CP, items=', '.join(
     '{"@type":"Offer","itemOffered":{"@type":"Service","name":"%s"}}' % r['nombre'] for r in RUBROS))
 
 
@@ -522,11 +556,16 @@ def pagina_inicio():
     <div class="wrap">
       <p class="eyebrow">Lo que dicen</p>
       <h2 class="titulo-seccion">Clientes de Córdoba</h2>
+      <div class="puntaje">
+        <span class="puntaje__n">{PUNTAJE}</span>
+        <span class="puntaje__e" aria-hidden="true">★★★★★</span>
+        <span class="puntaje__t">{CANT_RESENAS} opiniones en Google</span>
+      </div>
       <div class="citas">
 {CITAS}
       </div>
       <div style="margin-top:2rem">
-        <a class="btn btn--linea" href="{GOOGLE_RESENAS}" target="_blank" rel="noopener">Ver reseñas en Google &rarr;</a>
+        <a class="btn btn--linea" href="{GOOGLE_RESENAS}" target="_blank" rel="noopener">Ver todas las reseñas en Google &rarr;</a>
       </div>
     </div>
   </section>
@@ -717,7 +756,7 @@ def pagina_taller():
     <img class="hero__foto" src="{url(base, hero)}" alt="" width="1200" height="1200" fetchpriority="high" decoding="async">
     <div class="wrap hero__contenido">
       <p class="eyebrow">Quiénes somos</p>
-      <h1>Un taller familiar en Córdoba</h1>
+      <h1>Karina y Walter, un taller familiar en Córdoba</h1>
       <p class="hero__bajada">Empezamos por necesidad y seguimos por gusto. Hoy hacemos
         hierro y madera a medida para casas de toda la ciudad.</p>
     </div>
@@ -727,9 +766,9 @@ def pagina_taller():
     <div class="wrap prosa">
       <p class="eyebrow">La historia</p>
       <h2 class="titulo-seccion">Empezó como una salida y quedó como oficio</h2>
-      <p>Herrería WS Murua nació como respuesta a una crisis laboral que nos afectó
-        directamente. Decidimos convertirla en una oportunidad y armar un emprendimiento
-        familiar.</p>
+      <p>Somos <strong>Karina y Walter Murua</strong>. Herrería WS Murua nació como
+        respuesta a una crisis laboral que nos afectó directamente, y decidimos
+        convertirla en una oportunidad: armar un emprendimiento familiar.</p>
       <p>La pasión por las tareas manuales y la creatividad se potenciaron con el proyecto,
         y nos permitieron aprender y crecer gracias a las exigencias y las ideas de cada
         cliente. Muchos de los trabajos que ves en la web salieron de algo que alguien nos
@@ -761,10 +800,15 @@ def pagina_taller():
   <section class="seccion">
     <div class="wrap">
       <p class="eyebrow">Lo que dicen</p>
-      <h2 class="titulo-seccion">Clientes que nos escribieron</h2>
-      <p class="bajada">Comentarios que nos dejaron en Instagram después de entregar el trabajo.</p>
+      <h2 class="titulo-seccion">Clientes que nos recomiendan</h2>
+      <p class="bajada">Reseñas publicadas por clientes en nuestra ficha de Google.</p>
+      <div class="puntaje">
+        <span class="puntaje__n">{PUNTAJE}</span>
+        <span class="puntaje__e" aria-hidden="true">★★★★★</span>
+        <span class="puntaje__t">{CANT_RESENAS} opiniones · <a href="{GOOGLE_RESENAS}" target="_blank" rel="noopener">verlas en Google</a></span>
+      </div>
       <div class="citas">
-{CITAS}
+{CITAS_TODAS}
       </div>
       <div class="duo" style="margin-top:2.5rem">
         <img src="{url(base, 'img/galardones/4.webp')}" alt="Clienta agradeciendo en Instagram el escritorio que le fabricó Herrería WS Murua" width="1200" height="1200" loading="lazy" decoding="async">
@@ -903,9 +947,14 @@ def pagina_contacto():
       </div>
       <div>
         <p class="eyebrow">Dónde estamos</p>
-        <h2 class="titulo-seccion">Córdoba, Argentina</h2>
+        <h2 class="titulo-seccion">{CALLE}, {CIUDAD}</h2>
         <p class="bajada" style="font-size:var(--step-0)">Trabajamos en toda la ciudad de Córdoba
-          y alrededores. Vamos a tomar las medidas a tu casa.</p>
+          y alrededores. Vamos a tomar las medidas a tu casa, sin cargo.</p>
+        <div class="puntaje">
+          <span class="puntaje__n">{PUNTAJE}</span>
+          <span class="puntaje__e" aria-hidden="true">★★★★★</span>
+          <span class="puntaje__t">{CANT_RESENAS} opiniones · <a href="{GOOGLE_RESENAS}" target="_blank" rel="noopener">ver en Google</a></span>
+        </div>
         <div style="margin-top:1.5rem;border:1px solid var(--line);border-radius:4px;overflow:hidden">
           <iframe title="Ubicación de Herrería WS Murua en Google Maps" src="{mapa}"
                   width="600" height="380" style="border:0;width:100%;display:block"

@@ -379,6 +379,28 @@ p { margin: 0; }
   font-size: var(--step-1); letter-spacing: -.015em; line-height: 1.3;
 }
 .cita figcaption { margin-top: .9rem; color: var(--ink-3); font-size: var(--step--1); }
+.cita__estrellas {
+  display: block; margin-bottom: .7rem;
+  color: var(--accent); letter-spacing: .12em; font-size: 1.05rem;
+}
+
+/* Puntaje de la ficha de Google */
+.puntaje {
+  display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.puntaje__n {
+  font-family: Archivo, sans-serif; font-weight: 800;
+  font-size: var(--step-2); line-height: 1; font-variant-numeric: tabular-nums;
+}
+.puntaje__e { color: var(--accent); letter-spacing: .1em; }
+.puntaje__t { color: var(--ink-2); font-size: var(--step--1); }
+
+/* Texto solo para lectores de pantalla */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
 
 /* ------------------------------- dos columnas ----------------------------- */
 .duo {
