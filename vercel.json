@@ -1,5 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/pages/portfolio.html",       "destination": "/pages/trabajos.html", "permanent": true },
+    { "source": "/pages/quienes_somos.html",   "destination": "/pages/taller.html",   "permanent": true },
+    { "source": "/pages/reconocimientos.html", "destination": "/pages/taller.html",   "permanent": true },
+    { "source": "/pages/que_hacemos.html",     "destination": "/",                    "permanent": true }
+  ],
   "headers": [
     {
       "source": "/img/(.*)",
