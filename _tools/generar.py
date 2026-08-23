@@ -115,7 +115,8 @@ RUBROS = [
         incluye=['Rejas de frente y de ventana', 'Portones corredizos y de abrir',
                  'Portones automáticos, hechos desde cero',
                  'Adaptación de portones existentes a corredizo',
-                 'Barandas de escalera y balcón', 'Rejas anti-perro y con detalles torsionados'],
+                 'Barandas de escalera y balcón', 'Rejas anti-perro y con detalles torsionados',
+                 'Terminación en pintura epoxi, al horno o antióxido'],
     ),
     dict(
         slug='muebles-a-medida',
@@ -135,10 +136,12 @@ RUBROS = [
             'la mezcla que mejor envejece y la que más nos identifica.',
             'Cada mueble sale de una medida concreta: el hueco que querés llenar, la altura '
             'de tu silla, el largo de la pared. No hay tamaños estándar.',
+            'Trabajamos con distintos tipos de madera según el uso y el presupuesto, y '
+            'también restauramos muebles de hierro o madera que ya tenés.',
         ],
         incluye=['Mesas de comedor y ratonas', 'Escritorios y mesas de trabajo',
                  'Bibliotecas y estanterías', 'Racks y muebles de apoyo',
-                 'Botelleros y mobiliario decorativo'],
+                 'Botelleros y mobiliario decorativo', 'Restauración de muebles existentes'],
     ),
     dict(
         slug='cerramientos-y-aberturas',
@@ -161,7 +164,8 @@ RUBROS = [
         ],
         incluye=['Cerramientos de galería y quincho', 'Puertas corredizas y tipo granero',
                  'Ventanas y puertas de hierro', 'Mamparas para baño',
-                 'Frentes de asador y puertas guillotina'],
+                 'Frentes de asador y puertas guillotina',
+                 'Puertas con material desplegado (rejilla) para ventilación'],
     ),
     dict(
         slug='techos-y-galerias',
@@ -249,7 +253,7 @@ RUBROS = [
             'justo, la hacemos.',
             'Se combina muy bien con el frente de asador, que hacemos en el mismo trabajo.',
         ],
-        incluye=['Parrillas a medida', 'Accesorios de asador',
+        incluye=['Parrillas a medida, con varillas o chapa calada', 'Accesorios de asador',
                  'Piezas de hierro para cocina', 'Complementos de frente de asador'],
     ),
 ]
@@ -842,13 +846,44 @@ def pagina_taller():
       <div class="duo" style="margin-top:2rem">
         <ul class="lista-marcas">
           <li><strong>Nos escribís por WhatsApp</strong> con una foto del lugar y las medidas aproximadas.</li>
-          <li><strong>Vamos a tomar medidas</strong> y charlamos el diseño con vos.</li>
+          <li><strong>Vamos a tomar medidas</strong> nosotros mismos, en la mayoría de los casos.</li>
           <li><strong>Te pasamos el presupuesto</strong> sin cargo y sin compromiso.</li>
         </ul>
         <ul class="lista-marcas">
           <li><strong>Fabricamos en el taller</strong>, con la medida real de tu casa.</li>
           <li><strong>Instalamos</strong> y dejamos el trabajo terminado.</li>
           <li><strong>Lo publicamos</strong> en Instagram, con tu permiso.</li>
+        </ul>
+      </div>
+      <p class="prosa" style="margin-top:1.5rem;color:var(--ink-2)">
+        Preferimos medir nosotros: hasta una cinta métrica da medidas distintas según
+        quién mida, y esa diferencia después se nota en el trabajo terminado. Para cosas
+        puntuales —una mesa, por ejemplo, no algo como un ropero empotrado— y si ya tenés
+        las medidas seguras, o un plano de arquitecto, también trabajamos con eso.
+      </p>
+      <p class="prosa" style="margin-top:.8rem;color:var(--ink-2)">
+        Los plazos varían mucho según el trabajo: te decimos un tiempo estimado
+        cuando pasamos el presupuesto, no antes.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion" style="background: var(--surface-2);">
+    <div class="wrap">
+      <p class="eyebrow">Materiales</p>
+      <h2 class="titulo-seccion">Herrería y carpintería, con las herramientas para las dos</h2>
+      <p class="bajada" style="font-size:var(--step-0)">Trabajamos con todo tipo de metal y de madera,
+        y adaptamos las herramientas y la terminación a lo que haga falta.</p>
+      <div class="duo" style="margin-top:1.5rem">
+        <ul class="lista-marcas">
+          <li><strong>Caños, ángulos, chapa calada y material desplegado</strong>, según lo que pida cada pieza.</li>
+          <li><strong>Pintura epoxi, al horno o antióxido</strong>, la que corresponda al uso.</li>
+          <li><strong>Oxidato</strong>: una terminación de óxido controlado, sellada con barniz, para quien busca ese aspecto.</li>
+        </ul>
+        <ul class="lista-marcas">
+          <li><strong>Todo tipo de madera</strong>, según el uso y el presupuesto.</li>
+          <li><strong>Restauración</strong> de piezas de hierro o madera que ya tenés.</li>
+          <li>Herramientas propias para metal y para madera: no tercerizamos ninguna de las dos partes.</li>
         </ul>
       </div>
     </div>
