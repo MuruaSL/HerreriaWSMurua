@@ -184,7 +184,7 @@ RUBROS = [
         slug='techos-y-galerias',
         nombre='Techos y galerías',
         corto='Techos y galerías',
-        carpetas=['techos', 'techosycerramientos'],
+        carpetas=['techos'],
         resumen='Estructuras para cochera, galería y patio, con cenefa y chapa pintada.',
         titulo='Techos y Galerías Metálicas | Herrería en Córdoba',
         meta='Techos metálicos para cochera, galería y patio en Córdoba. Estructura de hierro, '
@@ -589,7 +589,7 @@ def pagina_inicio():
     <div class="tira__item"><div class="tira__d">Presupuesto sin cargo</div><div class="tira__t">Te pasamos el precio antes de que decidas</div></div>
     <div class="tira__item"><div class="tira__d">Todo a medida</div><div class="tira__t">Fabricación propia, sin medidas estándar</div></div>
     <div class="tira__item"><div class="tira__d">Herrero Amigo</div><div class="tira__t">Distinción de ACERCO</div></div>
-    <div class="tira__item"><div class="tira__d">Tres barrios privados</div><div class="tira__t">Somos su herrería de confianza</div></div>
+    <div class="tira__item"><div class="tira__d">Varios countries</div><div class="tira__t">Somos su herrería de confianza</div></div>
     <div class="tira__item"><div class="tira__d">Taller familiar</div><div class="tira__t">Hablás siempre con quien hace el trabajo</div></div>
   </div>
 
@@ -732,6 +732,8 @@ def pagina_trabajos():
         grupos.append(('Otros trabajos', None, extra))
     total = sum(len(g[2]) for g in grupos)
     hero = 'img/trabajos/muebles/' + sorted(os.listdir('img/trabajos/muebles'))[0]
+    # La foto del hero no se repite mas abajo, en la galeria de su propio rubro
+    grupos = [(n, s, [f for f in fs if f != hero]) for n, s, fs in grupos]
 
     filtros = ['<a class="btn btn--linea" href="#todos" data-filtro="todos">Todos</a>']
     filtros += [f'<a class="btn btn--linea" href="#{s or "otros"}" data-filtro="{s or "otros"}">{n}</a>'
@@ -842,7 +844,7 @@ def pagina_taller():
           <strong>Herrero Amigo</strong>. Es un reconocimiento del sector, no una
           autodefinición: lo da una empresa que trabaja con herreros de toda la provincia.</p>
         <p>También somos los herreros de confianza de
-          <strong>tres barrios privados de Córdoba</strong>, que es la forma más concreta
+          <strong>varios countries de Córdoba</strong>, que es la forma más concreta
           que tenemos de decir que el trabajo se sostiene en el tiempo.</p>
         <p>Hicimos trabajos para comercios y countries, no solo para casas. La
           <strong>Proveeduría Shizen</strong> la construimos de cero: techo, piso, deck,

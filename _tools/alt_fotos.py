@@ -78,13 +78,6 @@ add('techos', 'techo4.webp', 'Techo de policarbonato con cenefa de hierro forjad
 add('techos', 'techo5.webp', 'Techo de galería en policarbonato sobre estructura de hierro, en jardín')
 add('techos', 'techo6.webp', 'Marquesina de madera sobre local comercial')
 add('techos', 'techo_vero.webp', 'Techo de galería con estructura de hierro azul, al atardecer')
-add('techosycerramientos', 'techo1.webp', 'Techo de cochera en chapa sobre estructura de hierro gris')
-add('techosycerramientos', 'techo2.webp', 'Galería con techo de chapa translúcida y estructura de hierro azul, sobre patio con asador')
-add('techosycerramientos', 'techo3.webp', 'Galería de chapa translúcida con estructura de hierro negro, sobre patio con asador')
-add('techosycerramientos', 'techo4.webp', 'Techo de policarbonato con cenefa de hierro forjado decorativa')
-add('techosycerramientos', 'techo5.webp', 'Marquesina de madera sobre local comercial')
-add('techosycerramientos', 'techo6.webp', 'Techo de galería en policarbonato sobre estructura de hierro, en jardín')
-add('techosycerramientos', 'techo_vero.webp', 'Techo de galería con estructura de hierro azul, al atardecer')
 
 # ---------------------------------------------------------------- ESPEJOS
 add('espejos', '1.webp', 'Espejo redondo con marco de hierro negro, sobre consola de entrada')
