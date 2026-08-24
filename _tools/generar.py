@@ -689,7 +689,7 @@ def pagina_rubro(r):
 
   <section class="seccion" style="background: var(--surface-2);">
     <div class="wrap">
-      <p class="eyebrow">{len(fotos)} trabajos</p>
+      <p class="eyebrow">{len(fotos)} fotos</p>
       <h2 class="titulo-seccion">Lo que hicimos</h2>
       <div class="galeria">
 {galeria(base, resto, r['nombre'], desde=1)}
@@ -748,7 +748,7 @@ def pagina_trabajos():
                  if s else '')
         bloques.append(f'''  <section class="seccion" id="{s or 'otros'}">
     <div class="wrap">
-      <p class="eyebrow">{conteo_real[n]} trabajos</p>
+      <p class="eyebrow">{conteo_real[n]} fotos</p>
       <h2 class="titulo-seccion">{n}</h2>
       <div style="margin-top:1.2rem">{ficha}</div>
       <div class="galeria">
@@ -758,7 +758,7 @@ def pagina_trabajos():
   </section>''')
 
     h = cabeza(base, 'Trabajos Realizados | Herrería WS Murua — Córdoba',
-        f'Galería completa de {total} trabajos realizados en Córdoba: rejas, muebles a medida, '
+        f'Galería de {total} fotos de trabajos realizados en Córdoba: rejas, muebles a medida, '
         'cerramientos, techos, espejos, decks y elementos de cocina.',
         '/pages/trabajos.html', '/' + hero, miga='Trabajos realizados')
     h += cabecera(base, 'trabajos')
@@ -769,8 +769,8 @@ def pagina_trabajos():
     <div class="wrap hero__contenido">
       <p class="eyebrow">Herrería WS Murua · Córdoba</p>
       <h1>Trabajos realizados</h1>
-      <p class="hero__bajada">{total} trabajos hechos en Córdoba, ordenados por rubro.
-        Todo lo que ves acá lo fabricamos nosotros.</p>
+      <p class="hero__bajada">{total} fotos de trabajos hechos en Córdoba, ordenadas por rubro.
+        Hicimos muchos más de los que llegamos a fotografiar; esto es una muestra.</p>
       <div class="hero__acciones" style="gap:.5rem">
         {' '.join(filtros[1:])}
       </div>
