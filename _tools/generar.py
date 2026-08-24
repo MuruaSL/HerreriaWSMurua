@@ -198,7 +198,7 @@ RUBROS = [
             'define con vos: cenefa gruesa o liviana, chapa pintada del color que elijas.',
             'Va desde el techo simple para cubrir un auto hasta la galería completa con '
             'columnas, que es donde después entra el asador o el deck.',
-            'Si te preocupa por dónde escurre la lluvia, podemos sumar zinguería y '
+            'Si te preocupa dónde escurre la lluvia, podemos sumar zinguería y '
             'canaletas de chapa hechas a medida del techo. Es un adicional sobre el '
             'techo base, no algo que venga incluido siempre.',
         ],
@@ -224,8 +224,8 @@ RUBROS = [
             'retroiluminados con luz LED, que quedan muy bien en baños y entradas.',
             'Trabajamos con un vidriero de primera calidad, que además de las formas '
             'clásicas hace diseños especiales: espejos tipo ameba o repartidos en piezas '
-            'más chicas. También se puede pedir el vidrio con alguna característica '
-            'particular, como espejado o ahumado; consultanos según lo que busques.',
+            'más chicas. También se puede pedir con un tono ahumado en vez del espejo '
+            'clásico; consultanos según lo que busques.',
             'Al ser fabricación propia, la medida la ponés vos: no dependés de lo que haya '
             'en stock.',
         ],
@@ -731,8 +731,11 @@ def pagina_trabajos():
     if extra:
         grupos.append(('Otros trabajos', None, extra))
     total = sum(len(g[2]) for g in grupos)
+    conteo_real = {n: len(fs) for n, s, fs in grupos}
     hero = 'img/trabajos/muebles/' + sorted(os.listdir('img/trabajos/muebles'))[0]
-    # La foto del hero no se repite mas abajo, en la galeria de su propio rubro
+    # La foto del hero no se repite mas abajo, en la galeria de su propio rubro,
+    # pero sigue siendo parte del rubro: el contador usa el total real (conteo_real),
+    # no la cantidad de fotos que quedan en la grilla despues de sacar el hero.
     grupos = [(n, s, [f for f in fs if f != hero]) for n, s, fs in grupos]
 
     filtros = ['<a class="btn btn--linea" href="#todos" data-filtro="todos">Todos</a>']
@@ -745,7 +748,7 @@ def pagina_trabajos():
                  if s else '')
         bloques.append(f'''  <section class="seccion" id="{s or 'otros'}">
     <div class="wrap">
-      <p class="eyebrow">{len(fs)} trabajos</p>
+      <p class="eyebrow">{conteo_real[n]} trabajos</p>
       <h2 class="titulo-seccion">{n}</h2>
       <div style="margin-top:1.2rem">{ficha}</div>
       <div class="galeria">
